@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Object Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>1. Original Object Properties</h2>
+    <p>All properties found in the sample object:</p>
+    <pre id="properties-list"></pre>
+
+    <h2>2. Action: Deleting <span class="highlight">age</span> Property</h2>
+    <p>Executing: <code>delete Person.age;</code></p>
+
+    <h2>3. Updated Object</h2>
+    <p>The remaining structure of the object after deletion:</p>
+    <pre id="updated-object"></pre>
+</div>
+
+<script>
+    // Sample object provided in the prompt
+    var Person = {
+        firstName : "Tony",
+        lastName : "Lee",
+        age : 50,
+        eyeColor : "Blue"
+    };
+
+    // 1. List all properties of the object using Object.keys()
+    var properties = Object.keys(Person);
+    document.getElementById("properties-list").textContent = properties.join(", ");
+
+    // 2. Delete the age property from the object
+    delete Person.age;
+
+    // 3. Print/Display the object after deleting the property
+    // Using JSON.stringify with formatting (4 spaces) for clean readability
+    document.getElementById("updated-object").textContent = JSON.stringify(Person, null, 4);
+    
+    // Also logging to the browser console as requested by "print the object"
+    console.log("Updated Person Object:", Person);
+</script>
+
+</body>
+</html>
