@@ -1,80 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Object Manipulation</title>
+    <title>JS Object Assignment</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f9;
+            margin: 30px auto;
+            max-width: 700px;
+            background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
-        .container {
-            max-width: 600px;
-            background: white;
+        .question-box {
+            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #007bff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
         }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 8px;
+        .answer-box {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h3 {
+            margin-top: 0;
+            color: #007bff;
         }
         pre {
-            background-color: #272822;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
+            background-color: #f4f4f4;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             overflow-x: auto;
             font-family: 'Courier New', Courier, monospace;
         }
-        .highlight {
+        .result-item {
+            margin-bottom: 15px;
+        }
+        .label {
             font-weight: bold;
-            color: #e74c3c;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>1. Original Object Properties</h2>
-    <p>All properties found in the sample object:</p>
-    <pre id="properties-list"></pre>
+    <div class="question-box">
+        <strong>Question 3:</strong> 
+        <p>Write a JavaScript program to list all properties of the following object. Then delete the age property from the object. Also print the object after deleting the property. Please create a web page to show the information described above. Write down the link.</p>
+        <pre>
+Sample object:
+var Person = {
+    firstName : "Tony",
+    lastName : "Lee",
+    age : 50,
+    eyeColor : "Blue"
+};</pre>
+    </div>
 
-    <h2>2. Action: Deleting <span class="highlight">age</span> Property</h2>
-    <p>Executing: <code>delete Person.age;</code></p>
+    <div class="answer-box">
+        <h3>您的回答 (Answer)</h3>
+        
+        <div class="result-item">
+            <span class="label">1. List all properties of the object (列出所有屬性):</span>
+            <pre id="prop-list"></pre>
+        </div>
 
-    <h2>3. Updated Object</h2>
-    <p>The remaining structure of the object after deletion:</p>
-    <pre id="updated-object"></pre>
-</div>
+        <div class="result-item">
+            <span class="label">2. Action (執行刪除指令):</span>
+            <pre>delete Person.age;</pre>
+        </div>
 
-<script>
-    // Sample object provided in the prompt
-    var Person = {
-        firstName : "Tony",
-        lastName : "Lee",
-        age : 50,
-        eyeColor : "Blue"
-    };
+        <div class="result-item">
+            <span class="label">3. Print the object after deleting the property (刪除後的物件狀態):</span>
+            <pre id="obj-result"></pre>
+        </div>
+    </div>
 
-    // 1. List all properties of the object using Object.keys()
-    var properties = Object.keys(Person);
-    document.getElementById("properties-list").textContent = properties.join(", ");
+    <script>
+        // 原始物件
+        var Person = {
+            firstName : "Tony",
+            lastName : "Lee",
+            age : 50,
+            eyeColor : "Blue"
+        };
 
-    // 2. Delete the age property from the object
-    delete Person.age;
+        // 1. 列出所有屬性
+        var allProperties = Object.keys(Person).join(', ');
+        document.getElementById('prop-list').textContent = allProperties;
 
-    // 3. Print/Display the object after deleting the property
-    // Using JSON.stringify with formatting (4 spaces) for clean readability
-    document.getElementById("updated-object").textContent = JSON.stringify(Person, null, 4);
-    
-    // Also logging to the browser console as requested by "print the object"
-    console.log("Updated Person Object:", Person);
-</script>
+        // 2. 刪除 age 屬性
+        delete Person.age;
+
+        // 3. 印出刪除後的物件 (排版成漂亮的 JSON 字串)
+        document.getElementById('obj-result').textContent = JSON.stringify(Person, null, 4);
+    </script>
 
 </body>
 </html>
