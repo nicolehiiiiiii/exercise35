@@ -1,89 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Object Assignment</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px auto;
-            max-width: 700px;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        .question-box {
-            background-color: #fff;
-            padding: 20px;
-            border-left: 5px solid #007bff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-        .answer-box {
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        h3 {
-            margin-top: 0;
-            color: #007bff;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .result-item {
-            margin-bottom: 15px;
-        }
-        .label {
-            font-weight: bold;
-            color: #555;
-        }
-    </style>
+    <title>JS作業第3題</title>
 </head>
 <body>
 
-    <div class="question-box">
-        <strong>Question 3:</strong> 
-        <p>Write a JavaScript program to list all properties of the following object. Then delete the age property from the object. Also print the object after deleting the property. Please create a web page to show the information described above. Write down the link.</p>
-        <pre>
-Sample object:
-var Person = {
-    firstName : "Tony",
-    lastName : "Lee",
-    age : 50,
-    eyeColor : "Blue"
-};</pre>
-    </div>
+    <h2>Question 3</h2>
+    <p>Write a JavaScript program to list all properties of the following object. Then delete the age property from the object. Also print the object after deleting the property.</p>
 
-    <div class="answer-box">
-        <h3>您的回答 (Answer)</h3>
-        
-        <div class="result-item">
-            <span class="label">1. List all properties of the object (列出所有屬性):</span>
-            <pre id="prop-list"></pre>
-        </div>
+    <hr>
 
-        <div class="result-item">
-            <span class="label">2. Action (執行刪除指令):</span>
-            <pre>delete Person.age;</pre>
-        </div>
+    <h3>1. 物件的所有屬性 (Properties):</h3>
+    <p id="show-properties"></p>
 
-        <div class="result-item">
-            <span class="label">3. Print the object after deleting the property (刪除後的物件狀態):</span>
-            <pre id="obj-result"></pre>
-        </div>
-    </div>
+    <h3>2. 刪除 age 屬性後的物件結果:</h3>
+    <pre id="show-object"></pre>
 
     <script>
-        // 原始物件
+        // 題目給的原始物件
         var Person = {
             firstName : "Tony",
             lastName : "Lee",
@@ -91,15 +25,15 @@ var Person = {
             eyeColor : "Blue"
         };
 
-        // 1. 列出所有屬性
-        var allProperties = Object.keys(Person).join(', ');
-        document.getElementById('prop-list').textContent = allProperties;
+        // 1. 抓出所有屬性並顯示在網頁上
+        var keys = Object.keys(Person);
+        document.getElementById("show-properties").innerHTML = keys.join(", ");
 
         // 2. 刪除 age 屬性
         delete Person.age;
 
-        // 3. 印出刪除後的物件 (排版成漂亮的 JSON 字串)
-        document.getElementById('obj-result').textContent = JSON.stringify(Person, null, 4);
+        // 3. 把刪除後的物件轉成文字顯示在網頁上
+        document.getElementById("show-object").innerHTML = JSON.stringify(Person, null, 2);
     </script>
 
 </body>
